@@ -7,21 +7,27 @@ import entidad.Tipo;
 
 public class Main {
 
+	static Scanner sc = new Scanner(System.in);
+
 	public static void main(String[] args) {
+
+		// Cabecera del juego
 		System.out.println("  ------------------------  ");
 		System.out.println("| MUNIEMON EDICIÓN CRISTAL |");
 		System.out.println("  ------------------------  ");
 		System.out.println("");
 
-		Scanner sc = new Scanner(System.in);
 		int exit = 1;
 		ArrayList<Muniemon> listaMuniemones = new ArrayList<Muniemon>();
 
+		// Imprime el menú la primera vez
 		imprimirMenu(listaMuniemones);
 
+		// Imprime el menú de nuevo si la selección es 1 (crear) o 2 (mostrar) y sale
+		// del juego si es 3
 		while (exit != 3) {
 			if (exit == 1) {
-				listaMuniemones.add(crearMuniemon(sc));
+				listaMuniemones.add(crearMuniemon());
 				imprimirMenu(listaMuniemones);
 				exit = sc.nextInt();
 				sc.nextLine();
@@ -38,12 +44,15 @@ public class Main {
 				sc.nextLine();
 			}
 		}
+
+		// Footer juego GAME OVER
 		System.out.println("  ---------  ");
 		System.out.println("| Game Over |");
 		System.out.println("  ---------  ");
 
 	}
 
+	// Menú del juego
 	public static void imprimirMenu(ArrayList<Muniemon> listaMuniemones) {
 
 		if (listaMuniemones.isEmpty()) {
@@ -57,7 +66,8 @@ public class Main {
 
 	}
 
-	public static Muniemon crearMuniemon(Scanner sc) {
+	// Función para crear un Muniemon
+	public static Muniemon crearMuniemon() {
 		System.out.println("Introduce los datos de tu Muniemon");
 		System.out.println("----------------------------------");
 		System.out.print("- Nombre: ");
