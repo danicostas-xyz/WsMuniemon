@@ -80,13 +80,18 @@ public class Muniemon {
 		if (this.getVida() > 0) {
 			if (vidaOponente > 0) {
 				int danho = this.ataque - muniemon.getDefensa();
-				muniemon.setVida(vidaOponente -= danho);
+				muniemon.setVida(vidaOponente += danho);
+				System.out.println("¡" + this.getNombre() + " ataca a " + muniemon.getNombre() + "!");
+				System.out.println("Daño: " + danho);
+				System.out.println("Vida de " + muniemon.getNombre() + ": " + muniemon.getVida());
 			} else {
 				System.out.println(muniemon.getNombre() + " está debilitado, " + this.nombre + " no puede atacarle.");
 			}
 		} else {
 			System.out.println(this.getNombre() + " está debilitado y no puede atacar a " + muniemon.getNombre());
 		}
+		
+		
 
 	}
 

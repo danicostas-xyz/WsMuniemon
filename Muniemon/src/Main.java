@@ -79,6 +79,7 @@ public class Main {
 			System.out.println("");
 			System.out.println("Muniemon 1:");
 			listaMuniemones.add(crearMuniemon());
+			sc.nextLine();
 			System.out.println("Muniemon 2:");
 			listaMuniemones.add(crearMuniemon());
 		} else if (!listaMuniemones.isEmpty()) {
@@ -95,17 +96,11 @@ public class Main {
 
 	// Función para crear un Muniemon
 	public static Muniemon crearMuniemon() {
+		sc.nextLine();
 		System.out.println("Introduce los datos de tu Muniemon");
 		System.out.println("----------------------------------");
 		System.out.print("- Nombre: ");
-		String nombre;
-		if (sc.hasNextLine()) {
-			nombre = sc.nextLine();
-		} else {
-			sc.nextLine();
-			nombre = sc.nextLine();
-		}
-		
+		String nombre = sc.nextLine();
 		System.out.print("- Vida: ");
 		int vida = sc.nextInt();
 		System.out.print("- Ataque: ");
