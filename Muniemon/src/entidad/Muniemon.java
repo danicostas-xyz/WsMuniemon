@@ -75,4 +75,19 @@ public class Muniemon {
 		this.tipo = tipo;
 	}
 
+	public void atacar(Muniemon muniemon) {
+		int vidaOponente = muniemon.getVida();
+		if (this.getVida() > 0) {
+			if (vidaOponente > 0) {
+				int danho = this.ataque - muniemon.getDefensa();
+				muniemon.setVida(vidaOponente -= danho);
+			} else {
+				System.out.println(muniemon.getNombre() + " está debilitado, " + this.nombre + " no puede atacarle.");
+			}
+		} else {
+			System.out.println(this.getNombre() + " está debilitado y no puede atacar a " + muniemon.getNombre());
+		}
+
+	}
+
 }
