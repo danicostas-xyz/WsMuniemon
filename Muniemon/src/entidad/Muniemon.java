@@ -8,6 +8,7 @@ public class Muniemon {
 	private int vida;
 	private int ataque;
 	private int defensa;
+	private int velocidad;
 	private Tipo tipo;
 
 	// Constructores
@@ -16,12 +17,13 @@ public class Muniemon {
 		super();
 	}
 
-	public Muniemon(String nombre, int vida, int ataque, int defensa, Tipo tipo) {
+	public Muniemon(String nombre, int vida, int ataque, int defensa, int velocidad, Tipo tipo) {
 		super();
 		this.nombre = nombre;
 		this.vida = vida;
 		this.ataque = ataque;
 		this.defensa = defensa;
+		this.velocidad = velocidad;
 		this.tipo = tipo;
 	}
 
@@ -29,8 +31,8 @@ public class Muniemon {
 
 	@Override
 	public String toString() {
-		return "Muniemon [nombre=" + nombre + ", vida=" + vida + ", ataque=" + ataque + ", defensa=" + defensa
-				+ ", tipo=" + tipo + "]";
+		return "Muniemon [Nombre: " + nombre + ", Vida: " + vida + ", Ataque: " + ataque + ", Defensa: " + defensa
+				+ "Velocidad: " + velocidad + ", Tipo: " + tipo + "]";
 	}
 
 	// Métodos Setter & Getter
@@ -67,6 +69,14 @@ public class Muniemon {
 		this.defensa = defensa;
 	}
 
+	public int getVelocidad() {
+		return velocidad;
+	}
+
+	public void setVelocidad(int velocidad) {
+		this.velocidad = velocidad;
+	}
+
 	public Tipo getTipo() {
 		return tipo;
 	}
@@ -93,15 +103,13 @@ public class Muniemon {
 					System.out.println("Daño: " + danho);
 					System.out.println("Vida de " + muniemon.getNombre() + ": " + muniemon.getVida());
 				}
-				
+
 			} else {
 				System.out.println(muniemon.getNombre() + " está debilitado, " + this.nombre + " no puede atacarle.");
 			}
 		} else {
 			System.out.println(this.getNombre() + " está debilitado y no puede atacar a " + muniemon.getNombre());
 		}
-		
-		
 
 	}
 
