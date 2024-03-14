@@ -2,6 +2,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import entidad.Battle;
 import entidad.Muniemon;
 import entidad.Tipo;
 
@@ -12,7 +13,7 @@ public class Main {
 	public static void main(String[] args) {
 
 		ArrayList<Muniemon> listaMuniemones = new ArrayList<Muniemon>();
-		
+
 		printHeader();
 		startGame(listaMuniemones);
 		printFooter();
@@ -27,7 +28,7 @@ public class Main {
 		System.out.println("  ------------------------  ");
 		System.out.println("");
 	}
-	
+
 	// Lógica del juego
 	public static void startGame(ArrayList<Muniemon> listaMuniemones) {
 		int userChoice = 8; // Opción del usuario para interactuar con el menú
@@ -43,40 +44,40 @@ public class Main {
 				modifyMuniemon(0, listaMuniemones);
 				printMenu(listaMuniemones);
 				userChoice = sc.nextInt();
+				sc.nextLine();
 				break;
 			case 2:
 				modifyMuniemon(1, listaMuniemones);
 				printMenu(listaMuniemones);
 				userChoice = sc.nextInt();
+				sc.nextLine();
 				break;
 			case 3:
 				System.out.println(listaMuniemones.get(0));
 				printMenu(listaMuniemones);
 				userChoice = sc.nextInt();
+				sc.nextLine();
 				break;
 			case 4:
 				System.out.println(listaMuniemones.get(1));
 				printMenu(listaMuniemones);
 				userChoice = sc.nextInt();
+				sc.nextLine();
 				break;
 			case 5:
-				listaMuniemones.get(0).atacar(listaMuniemones.get(1));
-				printMenu(listaMuniemones);
+				Battle battle = new Battle(listaMuniemones.get(0), listaMuniemones.get(1));
+				battle.startBattle();
 				userChoice = sc.nextInt();
-				break;
-			case 6:
-				listaMuniemones.get(1).atacar(listaMuniemones.get(0));
-				printMenu(listaMuniemones);
-				userChoice = sc.nextInt();
-				break;
+				sc.nextLine();
 			default:
 				printMenu(listaMuniemones);
 				userChoice = sc.nextInt();
+				sc.nextLine();
 				break;
 			}
 		}
 	}
-	
+
 	// Imprime el footer del juego
 	public static void printFooter() {
 		// Footer juego GAME OVER
@@ -84,7 +85,7 @@ public class Main {
 		System.out.println("| Game Over |");
 		System.out.println("  ---------  ");
 	}
-	
+
 	// Menú del juego
 	public static void printMenu(ArrayList<Muniemon> listaMuniemones) {
 
@@ -93,7 +94,6 @@ public class Main {
 			System.out.println("");
 			System.out.println("Muniemon 1:");
 			listaMuniemones.add(createMuniemon());
-			sc.nextLine();
 			System.out.println("Muniemon 2:");
 			listaMuniemones.add(createMuniemon());
 		} else if (!listaMuniemones.isEmpty()) {
@@ -109,7 +109,6 @@ public class Main {
 
 	// Función para crear un Muniemon
 	public static Muniemon createMuniemon() {
-		sc.nextLine();
 		System.out.println("Introduce los datos de tu Muniemon");
 		System.out.println("----------------------------------");
 		System.out.print("- Nombre: ");
@@ -120,7 +119,6 @@ public class Main {
 		int ataque = sc.nextInt();
 		System.out.print("- Defensa: ");
 		int defensa = sc.nextInt();
-		System.out.println("");
 		System.out.print("- Velocidad: ");
 		int velocidad = sc.nextInt();
 		System.out.println("");
@@ -131,6 +129,8 @@ public class Main {
 		System.out.println("3. Planta");
 
 		int seleccionTipo = sc.nextInt();
+		sc.nextLine();
+
 		Tipo tipo = null;
 
 		switch (seleccionTipo) {
@@ -158,6 +158,7 @@ public class Main {
 				.println("Ya existe el Muniemon " + (index + 1) + ", ¿quieres crear otro y sobreescribir el anterior?");
 		System.out.println("Pulsa 1 para crear un nuevo Muniemon o 2 para descartarlo");
 		int choice = sc.nextInt();
+		sc.nextLine();
 		if (choice == 1) {
 			listaMuniemones.set(index, createMuniemon());
 		}
